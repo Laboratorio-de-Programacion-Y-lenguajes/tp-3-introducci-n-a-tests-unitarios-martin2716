@@ -1,6 +1,7 @@
 """Tests para la función div(a, b) -> float."""
 
-import pytest
+import pytest 
+import math
 
 from src.calculator import div
 
@@ -14,11 +15,20 @@ def test_div_normal():
 # --- TU TURNO ---
 # Agregá tests para los siguientes casos:
 #   - División que da resultado decimal (float)
+
+def test_div_decimal():
+    """Ejemplo: 3 / 6 debe dar 0.5"""
+    assert div(3, 6) == 0.5
+
 #   - División con números negativos
+
+def test_div_negativos():
+    """Ejemplo: -3 / 6 debe dar -0.5"""
+    assert div(-3, 6) == -0.5
+
 #   - División por cero → debe lanzar ZeroDivisionError
-#
-# Pista: para testear excepciones usá pytest.raises:
-#
-# def test_div_por_cero():
-#     with pytest.raises(ZeroDivisionError):
-#         div(10, 0)
+
+def test_div_cero():
+    with pytest.raises(ZeroDivisionError) as excinfo: div(3, 0)
+
+
